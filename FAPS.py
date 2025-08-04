@@ -17,11 +17,11 @@ st.header("2. Indiquer le score allant de 0 (aucune aide à la marche) à 5 (par
 Score = [0, 1, 2, 3, 4, 5]
 AmbulatoryAids = st.selectbox(
     "Pour l'aide ambulatoire :",
-    df['Score'])
+    Score['Score'])
     
 AssistiveDevice = st.selectbox(
     "Pour le dispositif d'assistance :",
-    df['Score'])
+    Score['Score'])
 
 if uploaded_files:
     selected_file_statique = st.selectbox("Choisissez un fichier statique pour l'analyse", uploaded_files, format_func=lambda x: x.name)
