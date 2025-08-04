@@ -201,13 +201,14 @@ if st.button("Lancer le calcul du score FAPS"):
         ScoreFAPS = np.round(100 - (StepFunctionR + StepFunctionL + SL_Asy + DynamiqueBaseSupport + AmbulatoryAids + AssistiveDevice),2)
     
         st.markdown("### 📊 Résultats du score FAPS")
-        st.write(f"**Score FAPS** : {ScoreFAPS:.3f}")
-        st.write(f"**Fonction du pas gauche** : {StepFunctionL}")
-        st.write(f"**Fonction du pas droit** : {StepFunctionR:.2f}")
-        st.write(f"**Base de support dynamique** : {DynamiqueBaseSupport:.3f}")
-        st.write(f"**Asymétrie** : {SL_Asy:.3f}")
-        st.write(f"**Aide ambulatoire** : {AmbulatoryAids:.3f}")
-        st.write(f"**Dispositif d'assistance** : {AssistiveDevice:.3f}")
+        st.write(f"**Score FAPS** : {ScoreFAPS:.2f}")
+        st.write(f"**Fonction du pas gauche** : - {StepFunctionL:.2f}")
+        st.write(f"**Fonction du pas droit** : - {StepFunctionR:.2f}")
+        st.write(f"**Base de support dynamique** : - {DynamiqueBaseSupport:.2f}")
+        st.write(f"**Asymétrie** : - {SL_Asy:.2f}")
+        st.write(f"**Aide ambulatoire** : - {AmbulatoryAids:.2f}")
+        st.write(f"**Dispositif d'assistance** : - {AssistiveDevice:.2f}")
+        st.write(f"**Lecture du test** : Un individu présentatn une marche saine aura un score compris entre 95 et 100. Tout score en dessous indique une atteinte à la fonctionnalité de la marche.")
       
     except Exception as e:
         st.error(f"Erreur pendant l'analyse : {e}")
