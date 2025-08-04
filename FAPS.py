@@ -54,6 +54,8 @@ if uploaded_files:
     
     markersStat  = statique['data']['points']
     markers1 = acq1['data']['points']
+except Exception as e:
+    st.warning("⚠️ Erreur de chargement des données")
 
 if st.button("Lancer le calcul du score FAPS"):
   try:
@@ -87,7 +89,9 @@ if st.button("Lancer le calcul du score FAPS"):
             if (end - start) >= min_lhee_cycle_duration
           ]
           lhee_n_cycles = len(lhee_valid_cycles)
-  
+      except Exception as e:
+        st.warning("⚠️ Erreur de calcul")
+      
       # Détection event droite
       # Détection des cycles à partir du marqueur RHEE (talon droite)
       points = acq1['data']['points']
@@ -111,7 +115,9 @@ if st.button("Lancer le calcul du score FAPS"):
             if (end - start) >= min_rhee_cycle_duration
           ]
           rhee_n_cycles = len(rhee_valid_cycles)
-  
+      except Exception as e:
+          st.warning("⚠️ Erreur de calcul")
+
       # Longueur pas à droite
       LgPasR = []
       for i,j in rhee_valid_cycles:
