@@ -19,7 +19,7 @@ AmbulatoryAids = st.selectbox(
     "Pour l'aide ambulatoire :",
     df['Score'])
     
-AssistiveDevice = st..selectbox(
+AssistiveDevice = st.selectbox(
     "Pour le dispositif d'assistance :",
     df['Score'])
 
