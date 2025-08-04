@@ -1,0 +1,8 @@
+streamlite
+ezc3d
+numpy
+matplotlib.pylot
+scipy.signal
+scipy.interpolate
+sklearn.preprocessing
+tempfile
