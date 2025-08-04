@@ -16,11 +16,11 @@ uploaded_files = st.file_uploader("Choisissez un ou plusieurs fichiers .c3d", ty
 st.header("2. Indiquer le score allant de 0 (aucune aide à la marche) à 5 (participant totalement dépendant) pour les aides ambulatoire (case 1) et les dispositifs d'assistances (case 2)")
 Score = [0, 1, 2, 3, 4, 5]
 AmbulatoryAids = st.selectbox(
-    "Pour l'aide ambulatoire :"
+    "Pour l'aide ambulatoire :",
     df['Score'])
     
 AssistiveDevice = st..selectbox(
-    "Pour le dispositif d'assistance :"
+    "Pour le dispositif d'assistance :",
     df['Score'])
 
 if uploaded_files:
