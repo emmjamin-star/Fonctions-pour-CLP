@@ -1,6 +1,7 @@
 import streamlit as st
 import ezc3d
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 from scipy.interpolate import interp1d
@@ -14,15 +15,15 @@ st.title("🦿 Score FAPS - Interface interactive")
 st.header("1. Importer un ou plusieurs fichiers .c3d dont au moins un fichier de statique et un d'essai dynamique")
 uploaded_files = st.file_uploader("Choisissez un ou plusieurs fichiers .c3d", type="c3d", accept_multiple_files=True)
 st.header("2. Indiquer le score allant de 0 (aucune aide à la marche) à 5 (participant totalement dépendant) pour les aides ambulatoire (case 1) et les dispositifs d'assistances (case 2)")
-Score = [0, 1, 2, 3, 4, 5]
-Score = int(Score)
+df = pd.DataFrame({'Score' : [0,1,2,3,4,5]})
+
 AmbulatoryAids = st.selectbox(
     "Pour l'aide ambulatoire :",
-    Score['Score'])
+    df['Score'])
     
 AssistiveDevice = st.selectbox(
     "Pour le dispositif d'assistance :",
-    Score['Score'])
+    df['Score'])
 
 if uploaded_files:
     selected_file_statique = st.selectbox("Choisissez un fichier statique pour l'analyse", uploaded_files, format_func=lambda x: x.name)
