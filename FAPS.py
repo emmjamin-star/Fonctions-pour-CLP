@@ -60,11 +60,9 @@ if st.button("Lancer le calcul du score FAPS"):
         # Extraction des coordonnées
         a1, a2, b1, b2, c1, c2 = markersStat[:,labels.index('LASI'),:][0, 0], markersStat[:,labels.index('LANK'),:][0, 0], markersStat[:,labels.index('LASI'),:][1, 0], markersStat[:,labels.index('LANK'),:][1, 0], markersStat[:,labels.index('LASI'),:][2, 0], markersStat[:,labels.index('LANK'),:][2, 0]
         LgJambeL = np.sqrt((a2-a1)*(a2-a1)+(b2-b1)*(b2-b1)+(c2-c1)*(c2-c1))
-        st.write(f"n1 ok")
       
         a1, a2, b1, b2, c1, c2 = markersStat[:,labels.index('RASI'),:][0, 0], markersStat[:,labels.index('RANK'),:][0, 0], markersStat[:,labels.index('RASI'),:][1, 0], markersStat[:,labels.index('RANK'),:][1, 0], markersStat[:,labels.index('RASI'),:][2, 0], markersStat[:,labels.index('RANK'),:][2, 0]
         LgJambeR = np.sqrt((a2-a1)*(a2-a1)+(b2-b1)*(b2-b1)+(c2-c1)*(c2-c1))
-        st.write(f"n2 ok")
       
         # Détection event gauche
         # Détection des cycles à partir du marqueur LHEE (talon gauche)
@@ -105,7 +103,6 @@ if st.button("Lancer le calcul du score FAPS"):
         min_rhee_cycle_duration = int(0.5 * freq)
         rhee_valid_cycles = [(start, end) for start, end in zip(rhee_cycle_start_indices, rhee_cycle_end_indices) if (end - start) >= min_rhee_cycle_duration]
         rhee_n_cycles = len(rhee_valid_cycles)
-        st.write(f"n3 ok")
     
         # Longueur pas à droite
         LgPasR = []
@@ -124,7 +121,6 @@ if st.button("Lancer le calcul du score FAPS"):
             LgPasG.append(z)
         LgPasLmoy = np.mean(LgPasG)
         VarLgPl = np.std(LgPasG)
-        st.write(f"n4 ok")
       
         # Vitesse de marche
         Vmarche = ((markers1[:,labels.index('STRN'),:][0,-1]-markers1[:,labels.index('STRN'),:][0,0]) / (len(markers1[:,labels.index('STRN'),:][0,:]) / 100)) / 1000
@@ -148,7 +144,6 @@ if st.button("Lancer le calcul du score FAPS"):
           
         StepTimer = np.mean(StepTimeCycleR)
         StepTimel = np.mean(StepTimeCycleL)
-        st.write(f"n5 ok")
       
         # Base de soutien dynamique
         # Lors du pas  coté droit
@@ -176,7 +171,6 @@ if st.button("Lancer le calcul du score FAPS"):
             za.append(z)
           
         DBSl = (np.mean(za))
-        st.write(f"n6 ok")
           
         # Calcul sccore  Dynamique Base Support
         DynamiqueBaseSupport = ((DBSr+DBSl)/2)/2/100
@@ -184,32 +178,27 @@ if st.button("Lancer le calcul du score FAPS"):
         if DynamiqueBaseSupport > 8:
             DynamiqueBaseSupport = 8
         DynamiqueBaseSupport = np.abs(DynamiqueBaseSupport - 8)
-        st.write(f"n7 ok")
       
         # Step function L
         StepFunctionL = np.abs(RatioV_LLl - 1.49)/0.082 + np.abs(RatioLL_SLl - 0.77)/0.046 + np.abs(StepTimel - 0.52) / 0.028
         if StepFunctionL > 22 : 
             StepFunctionL = 22
         StepFunctionL = np.abs(StepFunctionL - 22)
-        st.write(f"n8 ok")
       
         # Step function R
         StepFunctionR = np.abs(RatioV_LLr - 1.49)/0.082 + np.abs(RatioLL_SLr - 0.77)/0.046 + np.abs(StepTimer - 0.52) / 0.028
         if StepFunctionR > 22 : 
             StepFunctionR = 22
         StepFunctionR = np.abs(StepFunctionR - 22)
-        st.write(f"n9 ok")
       
         # SL Asy
         SL_Asy = np.abs(RatioLL_SLr / RatioLL_SLl) / 0.2
         if SL_Asy > 8 : 
             SL_Asy = 8
         SL_Asy = np.abs(SL_Asy - 8)
-        st.write(f"n10 ok")
       
         # Score final FAPS
         ScoreFAPS = np.round(100 - (StepFunctionR + StepFunctionL + SL_Asy + DynamiqueBaseSupport + AmbulatoryAids + AssistiveDevice),2)
-        st.write(f"n11 ok")
     
         st.markdown("### 📊 Résultats du score FAPS")
         st.write(f"**Score FAPS** : {ScoreFAPS:.3f}")
