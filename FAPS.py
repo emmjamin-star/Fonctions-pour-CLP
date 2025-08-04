@@ -216,7 +216,7 @@ if st.button("Lancer le calcul du score FAPS"):
       st.write(f"**Asymétrie** : {SL_Asy:.3f}")
       st.write(f"**Aide ambulatoire** : {AmbulatoryAids:.3f}")
       st.write(f"**Dispositif d'assistance** : {AssistiveDevice:.3f}")
-    except Exception as e:
+except Exception as e:
         st.error(f"Erreur pendant l'analyse : {e}")
 
   
