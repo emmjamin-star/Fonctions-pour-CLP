@@ -1,4 +1,4 @@
-streamlite
+streamlit
 ezc3d
 numpy
 matplotlib
