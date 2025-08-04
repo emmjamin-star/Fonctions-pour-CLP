@@ -14,7 +14,7 @@ st.title("🦿 Score FAPS - Interface interactive")
 # 1. Upload des fichiers .c3d
 st.header("1. Importer un ou plusieurs fichiers .c3d dont au moins un fichier de statique et un d'essai dynamique")
 uploaded_files = st.file_uploader("Choisissez un ou plusieurs fichiers .c3d", type="c3d", accept_multiple_files=True)
-st.header("2. Indiquer le score allant de 0 (aucune aide à la marche) à 5 (participant totalement dépendant) pour les aides ambulatoire (case 1) et les dispositifs d'assistances (case 2)")
+st.header("2. Indiquer le score allant de 0 (aucune aide à la marche) à 5 (participant totalement dépendant) pour les aides ambulatoire et les dispositifs d'assistances")
 df = pd.DataFrame({'Score' : [0,1,2,3,4,5]})
 
 AmbulatoryAids = st.selectbox(
@@ -208,7 +208,7 @@ if st.button("Lancer le calcul du score FAPS"):
         st.write(f"**Asymétrie** : - {SL_Asy:.2f}")
         st.write(f"**Aide ambulatoire** : - {AmbulatoryAids:.2f}")
         st.write(f"**Dispositif d'assistance** : - {AssistiveDevice:.2f}")
-        st.write(f"**Lecture du test** : Un individu présentatn une marche saine aura un score compris entre 95 et 100. Tout score en dessous indique une atteinte à la fonctionnalité de la marche.")
+        st.write(f"**Lecture du test** : Un individu présentant une marche saine aura un score compris entre 95 et 100. Tout score en-dessous indique une atteinte à la fonctionnalité de la marche.")
       
     except Exception as e:
         st.error(f"Erreur pendant l'analyse : {e}")
