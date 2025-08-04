@@ -87,8 +87,6 @@ if st.button("Lancer le calcul du score FAPS"):
                 if (end - start) >= min_lhee_cycle_duration
               ]
               lhee_n_cycles = len(lhee_valid_cycles)
-           except Exception as e:
-               st.error("⚠️ Erreur de calcul")
           
           # Détection event droite
           # Détection des cycles à partir du marqueur RHEE (talon droite)
@@ -113,8 +111,6 @@ if st.button("Lancer le calcul du score FAPS"):
                 if (end - start) >= min_rhee_cycle_duration
               ]
               rhee_n_cycles = len(rhee_valid_cycles)
-           except Exception as e:
-               st.error("⚠️ Erreur de calcul")
     
           # Longueur pas à droite
           LgPasR = []
