@@ -21,7 +21,7 @@ AmbulatoryAids = st.selectbox(
     
 AssistiveDevice = st..selectbox(
     "Pour le dispositif d'assistance :"
-    df['Score])
+    df['Score'])
 
 if uploaded_files:
     selected_file_statique = st.selectbox("Choisissez un fichier statique pour l'analyse", uploaded_files, format_func=lambda x: x.name)
