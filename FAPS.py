@@ -57,12 +57,12 @@ if uploaded_files:
 
 if st.button("Lancer le calcul du score FAPS"):
     try:
-        # Extraction des coordonnées
-        a1, a2, b1, b2, c1, c2 = markersStat[:,labels.index('LASI'),:][0, 0], markersStat[:,labels.index('LANK'),:][0, 0], markersStat[:,labels.index('LASI'),:][1, 0], markersStat[:,labels.index('LANK'),:][1, 0], markersStat[:,labels.index('LASI'),:][2, 0], markersStat[:,labels.index('LANK'),:][2, 0]
+         # Extraction des coordonnées
+        a1, a2, b1, b2, c1, c2 = markersStat[:,labelsStat.index('LASI'),:][0, 0], markersStat[:,labelsStat.index('LANK'),:][0, 0], markersStat[:,labelsStat.index('LASI'),:][1, 0], markersStat[:,labelsStat.index('LANK'),:][1, 0], markersStat[:,labelsStat.index('LASI'),:][2, 0], markersStat[:,labelsStat.index('LANK'),:][2, 0]
         LgJambeL = np.sqrt((a2-a1)*(a2-a1)+(b2-b1)*(b2-b1)+(c2-c1)*(c2-c1))
-      
-        a1, a2, b1, b2, c1, c2 = markersStat[:,labels.index('RASI'),:][0, 0], markersStat[:,labels.index('RANK'),:][0, 0], markersStat[:,labels.index('RASI'),:][1, 0], markersStat[:,labels.index('RANK'),:][1, 0], markersStat[:,labels.index('RASI'),:][2, 0], markersStat[:,labels.index('RANK'),:][2, 0]
-        LgJambeR = np.sqrt((a2-a1)*(a2-a1)+(b2-b1)*(b2-b1)+(c2-c1)*(c2-c1))
+
+        d1, d2, e1, e2, f1, f2 = markersStat[:,labelsStat.index('RASI'),:][0, 0], markersStat[:,labelsStat.index('RANK'),:][0, 0], markersStat[:,labelsStat.index('RASI'),:][1, 0], markersStat[:,labelsStat.index('RANK'),:][1, 0], markersStat[:,labelsStat.index('RASI'),:][2, 0], markersStat[:,labelsStat.index('RANK'),:][2, 0]
+        LgJambeR = np.sqrt((d2-d1)*(d2-d1)+(e2-e1)*(e2-e1)+(f2-f1)*(f2-f1))
       
         # Détection event gauche
         # Détection des cycles à partir du marqueur LHEE (talon gauche)
